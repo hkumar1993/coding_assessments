@@ -23,7 +23,10 @@ describe '#reversed_linked_list' do
         end
         p head
         p current_link
-        [head, current_link]
+        {
+            head: head,
+            tail: current_link
+        }
     end
 
     it 'returns the head if there is only one node in the list' do
@@ -31,6 +34,6 @@ describe '#reversed_linked_list' do
     end
 
     it 'reverses linked list' do
-        expect(reversed_linked_list(many_links[0])).to be(many_links[1])
+        expect(reversed_linked_list(many_links[:head])).to be(many_links[:tail])
     end
 end
