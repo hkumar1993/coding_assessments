@@ -1,9 +1,13 @@
 def kth_last_node(k, head)
-    nodes = []
+    length = 0
     current = head
     until current.nil?
-        nodes << current
         current = current.next
+        length += 1
     end
-    nodes[nodes.length - k]
+    kth_node = head
+    (length - k).times do
+        kth_node = kth_node.next
+    end
+    kth_node
 end
