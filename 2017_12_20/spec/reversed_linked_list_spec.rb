@@ -21,8 +21,8 @@ describe '#reversed_linked_list' do
                 current_link = link
             end
         end
-        p head
-        p current_link
+        # p head
+        # p current_link
         {
             head: head,
             tail: current_link
