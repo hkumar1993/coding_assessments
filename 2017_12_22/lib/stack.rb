@@ -10,4 +10,9 @@ class Stack
     def push(val)
         @store.unshift(val)
     end
+
+    def pop
+        @store.shift
+    end
+
 end
