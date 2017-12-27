@@ -14,12 +14,10 @@ def range_overlap?(node_range, query_range)
     # Partial Overlap => 0
     # No Overlap => -1
 
-    if node_range.include?(query_range.first) || node_range.include?(query_range.last)
-        if query_range.include?(node_range.first) && query_range.include?(node_range.last)
-            return 1
-        else
-            return 0
-        end
+    if query_range.include?(node_range.first) && query_range.include?(node_range.last)
+        return 1
+    elsif node_range.include?(query_range.first) || node_range.include?(query_range.last)
+        return 0
     else
         return -1
     end
