@@ -1,30 +1,26 @@
 require_relative 'range_node'
 
 def range_minimum_query(arr, range_start, range_end)
+    root = make_segment_tree(arr)
+
+end
+
+def find_minimum_node(node, range_start, range_end)
     
 end
 
-def make_segment_tree(arr, range_start = 0, range_end = arr.length - 1)
-    node = RangeNode.new(range_start, range_end)
-    
-    if range_start ==  range_end
-        node.value = arr[range_end]
-        return node
+def range_overlap?(node_range, query_range)
+    # Total Overlap => 1
+    # Partial Overlap => 0
+    # No Overlap => -1
+
+    if node_range.include?(query_range.first) || node_range.include?(query_range.last)
+        if query_range.include?(node_range.first) && query_range.include?(node_range.last)
+            return 1
+        else
+            return 0
+        end
+    else
+        return -1
     end
-    mid = range_start + ((range_end - range_start) / 2)
-    node.left = make_segment_tree(arr, range_start, mid)
-    node.right = make_segment_tree(arr, mid+1, range_end)
-    node.value = find_max_node(node.left, node.right)
-
-    return node
-end
-
-def find_max_node(left, right)
-    return nil if left.value.nil? && right.value.nil?
-    
-    return left.value if right.value.nil?
-
-    return right.value if left.value.nil?
-
-    return right.value < left.value ? right.value : left.value
 end
