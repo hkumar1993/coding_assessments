@@ -14,8 +14,11 @@ describe "#range_overlap?" do
         expect(range_overlap?((2..3),(1..5))).to eq(1)  
     end
     
+    it "returns 0 if no overlap" do
+        expect(range_overlap?((1..2),(3..3))).to eq(-1)  
+        expect(range_overlap?((4..5),(3..3))).to eq(-1)  
+    end
     
-
 end
 
 
