@@ -1,6 +1,7 @@
 require 'byebug'
 
-def coin_base(value, denominations)
+# RECURSIVE
+def coin_base_recursive(value, denominations)
     return nil if denominations.empty?
     return [] if value == 0
     combinations = []
@@ -11,7 +12,7 @@ def coin_base(value, denominations)
         elsif remaining < 0
             next
         else
-            remaining_combinations = coin_base(remaining, denominations)
+            remaining_combinations = coin_base_recursive(remaining, denominations)
             remaining_combinations.map! { |combo| combo << coin }
             combinations.concat( remaining_combinations )
         end
