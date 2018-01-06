@@ -23,3 +23,6 @@ def n_in_a_row(n, input)
     winner
 end
 
+def check_win?(n, current_element, row_id, col_id)
+   vectors = [ [1,0], [0,1], [1,1], [] ] 
+end
