@@ -7,23 +7,23 @@
 # input = 2d array
 
 # [
-#     ['x','','o'],
-#     ['x','o',''],
-#     ['x','', '']
+    # ['x','','o'],
+    # ['x','o',''],
+    # ['x','', '']
 # ]
 
 def n_in_a_row(n, input)
     winner = nil
     input.each_with_index do |row, row_id|
         row.each_with_index do |el, col_id|
-            winner = el if check_win?(n, el, row_id, col_id)
+            winner = el if check_win?(n, el, row_id, col_id, input)
             return winner unless winner.nil?
         end
     end
     winner
 end
 
-def check_win?(n, current_element, row_id, col_id)
+def check_win?(n, current_element, row_id, col_id, input)
    vectors = [ [1,0], [0,1], [1,1], [1, -1] ]
    consecutive = 0
    win = false
