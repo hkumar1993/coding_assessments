@@ -16,6 +16,7 @@ def n_in_a_row(n, input)
     winner = nil
     input.each_with_index do |row, row_id|
         row.each_with_index do |el, col_id|
+            next if el == ''
             winner = el if check_win?(n, el, row_id, col_id, input)
             return winner unless winner.nil?
         end
@@ -50,6 +51,6 @@ def check_vector(n, vector, el, row_id, col_id, input)
         break if row >= table_width || col >= table_width
         current_element = input[row][col]
     end
-    
+
     consecutive
 end
