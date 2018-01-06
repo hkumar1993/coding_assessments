@@ -23,8 +23,10 @@ def n_in_a_row(n, input)
     winner
 end
 
-def check_win?(n, current_element, row_id, col_id, input)
+def check_win?(n, el, row_id, col_id, input)
    vectors = [ [1,0], [0,1], [1,1], [1, -1] ]
+   table_width = input.length
+   table_height = input.first.length
    consecutive = 0
    win = false
     vectors.each do |vector|
@@ -35,6 +37,7 @@ def check_win?(n, current_element, row_id, col_id, input)
             consecutive += 1
             row += row_vector
             col += col_vector
+            break if row >= table_width || col >= table_width
             current_element = input[row][col]
         end
         if consecutive == n
