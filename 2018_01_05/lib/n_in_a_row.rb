@@ -25,28 +25,31 @@ end
 
 def check_win?(n, el, row_id, col_id, input)
    vectors = [ [1,0], [0,1], [1,1], [1, -1] ]
-   table_width = input.length
-   table_height = input.first.length
-   consecutive = 0
    win = false
     vectors.each do |vector|
-        row_vector, col_vector = vector
-        row, col = row_id, col_id
-        current_element = input[row][col]
-        until consecutive == n || current_element != el
-            consecutive += 1
-            row += row_vector
-            col += col_vector
-            break if row >= table_width || col >= table_width
-            current_element = input[row][col]
-        end
-        if consecutive == n
+        if check_vector(n, vector, el, row_id, col_id, input) == n
             win = true
-            break        
-        else
-            consecutive = 0
+            break
         end
     end
-    
     win
+end
+
+def check_vector(n, vector, el, row_id, col_id, input)
+    table_width = input.length
+    table_height = input.first.length
+    consecutive = 0
+    row_vector, col_vector = vector
+    row, col = row_id, col_id
+    current_element = input[row][col]
+
+    until consecutive == n || current_element != el
+        consecutive += 1
+        row += row_vector
+        col += col_vector
+        break if row >= table_width || col >= table_width
+        current_element = input[row][col]
+    end
+    
+    consecutive
 end
