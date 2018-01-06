@@ -24,5 +24,26 @@ def n_in_a_row(n, input)
 end
 
 def check_win?(n, current_element, row_id, col_id)
-   vectors = [ [1,0], [0,1], [1,1], [] ] 
+   vectors = [ [1,0], [0,1], [1,1], [1, -1] ]
+   consecutive = 0
+   win = false
+    vectors.each do |vector|
+        row_vector, col_vector = vector
+        row, col = row_id, col_id
+        current_element = input[row][col]
+        until consecutive == n || current_element != el
+            consecutive += 1
+            row += row_vector
+            col += col_vector
+            current_element = input[row][col]
+        end
+        if consecutive == n
+            win = true
+            break        
+        else
+            consecutive = 0
+        end
+    end
+    
+    win
 end
