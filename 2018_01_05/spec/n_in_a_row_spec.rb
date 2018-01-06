@@ -28,5 +28,28 @@ describe "#check_win?" do
         expect(check_win?(2, 'x', 0, 0, single_input)).to be_falsey
     end
     
+end
+
+describe "#n_in_a_row" do
+    let(:input) { 
+        [
+            ['x','','o'],
+            ['x','o',''],
+            ['x','', '']
+        ]
+    }
+    let(:single_input) { 
+        [
+            ['x','','o'],
+            ['o','o','o'],
+            ['x','', '']
+        ]
+    }
+    it "finds which element is n-in-a-row" do
+        expect(n_in_a_row(3, input)).to eq('x')
+        expect(n_in_a_row(1, input)).to eq('x')
+        expect(n_in_a_row(2, single_input)).to eq('o')
+        expect(n_in_a_row(3, single_input)).to eq('o')
+    end
     
 end
