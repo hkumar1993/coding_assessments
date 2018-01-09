@@ -51,3 +51,41 @@ def set_color( colors, neighbor_colors )
     end
     current_color
 end
+
+# TIME COMPLEXITY 
+# O ( N * D )
+
+# SPACE COMPLEXITY 
+# O ( N + D + D )
+
+def color_graph_linear(graph)
+    maximum_degree = 0
+    graph.each do |node|
+        maximum_degree = node.neighbors.length if node.neighbors.length > maximum_degree
+    end
+    number_of_colors = maximum_degree + 1
+    
+    colors = Array.new
+    number_of_colors.times { |i| colors << i }
+    
+    graph.each do |node|
+        puts "Coloring #{node}"
+        raise ArgumentError if node.neighbors.include?(node)
+
+        illegal_colors = Set.new
+
+        node.neighbors.each do |neighbor|
+            illegal_colors << neighbor.color unless neighbor.color.nil?
+        end
+
+        colors.each do |color|
+            unless illegal_colors.include?(color)
+                node.color = color
+                break
+            end
+        end
+
+    end
+
+
+end
