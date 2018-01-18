@@ -1,3 +1,5 @@
+// Given an array of stock prices, find the largest profit possible
+
 let stockPricesYesterday = [10, 7, 5, 8, 11, 9]
 
 function getMaxProfit(stockPrices){
