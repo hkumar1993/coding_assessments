@@ -40,13 +40,16 @@ function condensedTime(schedule){
             currentMeeting = meeting
         }
     }
+    result.push(Object.assign(currentMeeting))
+
+    return result
 
 }
 
 function mergeable( meeting1, meeting2 ){
-    if(meeting1.startTime > meeting1.startTime && meeting1.startTime < meeting1.endTime){
+    if(meeting1.startTime >= meeting2.startTime && meeting1.startTime <= meeting2.endTime){
         return true;
-    } else if(meeting1.endTime > meeting1.startTime && meeting1.endTime < meeting1.endTime){
+    } else if(meeting1.endTime >= meeting2.startTime && meeting1.endTime <= meeting2.endTime){
         return true;
     } else {
         return false
